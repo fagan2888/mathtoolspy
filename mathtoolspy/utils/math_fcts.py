@@ -76,13 +76,21 @@ def interpolation_bilinear(x, y, x1, x2, y1, y2, z11, z21, z22, z12):
 
 def get_grid(start, end, nsteps=100):
     """
-    :param start: the start value of the generated list.
-    :type float
-    :param end: the end value of the generated list.
-    :type float
-    :param nsteps: optional the number of steps (default=100), i.e. the generated list contains nstep+1 values.
-    :type int
     Generates a equal distanced list of float values with nsteps+1 values, begining start and ending with end.
+
+    :param start: the start value of the generated list.
+
+    :type float
+
+    :param end: the end value of the generated list.
+
+    :type float
+
+    :param nsteps: optional the number of steps (default=100), i.e. the generated list contains nstep+1 values.
+
+    :type int
+
+
     """
     step = (end-start) / float(nsteps)
     return [start + i * step for i in xrange(nsteps+1)]

@@ -12,6 +12,7 @@
 
 
 import codecs
+
 try:
     from setuptools import setup
 except ImportError:
@@ -20,13 +21,18 @@ except ImportError:
 setup(
     name='mathtoolspy',
     description='Python library for mathematically operations, like  integration, solver, distributions and other useful simple and rich math functionality.',
-    version='0.1',
+    version='0.2',
     author='Deutsche Postbank AG [pbrisk]',
     author_email='pbrisk_at_github@icloud.com',
     url='https://github.com/pbrisk/mathtoolspy',
     bugtrack_url='https://github.com/pbrisk/mathtoolspy/issues',
     license='Apache License 2.0',
-    packages=['mathtoolspy', 'mathtoolspy.distribution', 'mathtoolspy.integration', 'mathtoolspy.solver', 'mathtoolspy.utils'],
+    packages=[
+        'mathtoolspy',
+        'mathtoolspy.distribution',
+        'mathtoolspy.integration',
+        'mathtoolspy.solver',
+        'mathtoolspy.utils'],
     long_description=codecs.open('README.rst', encoding='utf-8').read(),
     platforms='any',
     classifiers=[

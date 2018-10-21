@@ -137,3 +137,33 @@ def minimum_bracketing(fct, initial_value=0.0, natural_length=1.0 + DOUBLE_TOL):
     tb = ta + natural_length
     ret = _minimum_bracketing(ta, tb, fct)
     return ret
+
+
+def simple_bracketing(func, a, b, precision=TINY):
+    """ find root by simple_bracketing an interval
+
+    :param callable func: function to find root
+    :param float a: lower interval boundary
+    :param float b: upper interval boundary
+    :param float precision: max accepted error
+    :rtype: tuple
+    :return: :code:`(a, m, b)` of last recursion step with :code:`m = a + (b-a) *.5`
+
+    """
+    fa, fb = func(a), func(b)
+    if fb < fa:
+        f = (lambda x: -func(x))
+        fa, fb = fb, fa
+    else:
+        f = func
+
+    msg = "simple_bracketing function must be loc monotone between %0.4f and %0.4f \n" % (a, b)
+    msg += "and simple_bracketing 0. between  %0.4f and %0.4f." % (fa, fb)
+    assert fa <= 0. <= fb, msg
+
+    m = a + (b-a) * 0.5
+    if abs(b - a) < DOUBLE_TOL and abs(fb - fa) < precision:
+        return a, m, b
+
+    a, b = (m, b) if f(m) < 0 else (a, m)
+    return simple_bracketing(f, a, b, precision)

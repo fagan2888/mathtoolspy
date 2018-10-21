@@ -18,7 +18,7 @@ from mathtoolspy.solver.optimizer import Optimizer1Dim, Constraint, TangentsTran
     OptimizerResult
 from mathtoolspy.solver.minimize_algorithm_1dim_brent import minimize_algorithm_1dim_brent as brent
 from mathtoolspy.solver.minimize_algorithm_1dim_golden import minimize_algorithm_1dim_golden as golden
-from mathtoolspy.solver.minimum_bracketing import minimum_bracketing, mn_brak
+from mathtoolspy.solver.minimum_bracketing import minimum_bracketing, mn_brak, simple_bracketing
 from mathtoolspy.solver.analytic_solver import roots_of_cubic_polynom
 
 from mathtoolspy import Surface
@@ -56,8 +56,8 @@ def generate_integration_tests():
         s.append("'" + int_name + "':" + i)
     print("integrators = {" + ", ".join(s) + "}")
     print("fcts = (" + ", ".join(fcts_names) + ")")
-        
-    
+
+
     '''
     integration_boundaries = ((-1.0, 2.0), (0.0, 1.0), (-100.0, 99.0))
     file_name = r"/Users/MarcusSteinkamp/Documents/integrator_test_code.txt"
@@ -994,6 +994,24 @@ class Test(unittest.TestCase):
         result = mn_brak(0.1, 1.0, fct)
         benchmark = (0.1, 1.0, 1.556230591, 46343.60499652936, -8.949238582537712, 1.3006670200315953)
         self._assertEqual(benchmark, result, 7)
+
+    def test_simple_bracketing_0(self):
+        fct = lambda x: (x - 1) * (x - 1) * (x - 1)
+        benchmark = 1.0
+        before, result, after = simple_bracketing(fct, -2.0, 2.0)
+        self.assertAlmostEqual(benchmark, result)
+
+    def test_simple_bracketing_1(self):
+        fct = lambda x: exp(x) * (x - 1) * (x - 1) * (x - 1)
+        benchmark = 1.0
+        before, result, after = simple_bracketing(fct, -2.0, 2.0)
+        self.assertAlmostEqual(benchmark, result)
+
+    def test_simple_bracketing_2(self):
+        fct = lambda x: exp(x) * (x - 1) * (x - 1) * (x - 1)
+        benchmark = 1.0
+        before, result, after = simple_bracketing(fct, -2.0, 2.0)
+        self.assertAlmostEqual(benchmark, result)
 
     def test_composion_fct(self):
         compo_fct = CompositionFct(lambda x: x * x, lambda x: x + 5)

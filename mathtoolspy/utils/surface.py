@@ -12,7 +12,8 @@
 
 
 import bisect
-from math_fcts import interpolation_bilinear, interpolation_linear
+
+from ..interpolation import interpolation_bilinear, interpolation_linear
 
 
 class Surface(object):

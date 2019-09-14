@@ -18,11 +18,13 @@ from mathtoolspy.solver.optimizer import Optimizer1Dim, Constraint, TangentsTran
     OptimizerResult
 from mathtoolspy.solver.minimize_algorithm_1dim_brent import minimize_algorithm_1dim_brent as brent
 from mathtoolspy.solver.minimize_algorithm_1dim_golden import minimize_algorithm_1dim_golden as golden
-from mathtoolspy.solver.minimum_bracketing import minimum_bracketing, mn_brak
+from mathtoolspy.solver.minimum_bracketing import minimum_bracketing, mn_brak, simple_bracketing
 from mathtoolspy.solver.analytic_solver import roots_of_cubic_polynom
 
 from mathtoolspy import Surface
 from mathtoolspy.utils.math_fcts import prod
+
+from mathtoolspy import spline, nak_spline, natural_spline
 
 def generate_integration_tests():
     def print_(f, msg):
@@ -56,8 +58,8 @@ def generate_integration_tests():
         s.append("'" + int_name + "':" + i)
     print("integrators = {" + ", ".join(s) + "}")
     print("fcts = (" + ", ".join(fcts_names) + ")")
-        
-    
+
+
     '''
     integration_boundaries = ((-1.0, 2.0), (0.0, 1.0), (-100.0, 99.0))
     file_name = r"/Users/MarcusSteinkamp/Documents/integrator_test_code.txt"
@@ -995,6 +997,24 @@ class Test(unittest.TestCase):
         benchmark = (0.1, 1.0, 1.556230591, 46343.60499652936, -8.949238582537712, 1.3006670200315953)
         self._assertEqual(benchmark, result, 7)
 
+    def test_simple_bracketing_0(self):
+        fct = lambda x: (x - 1) * (x - 1) * (x - 1)
+        benchmark = 1.0
+        before, result, after = simple_bracketing(fct, -2.0, 2.0)
+        self.assertAlmostEqual(benchmark, result)
+
+    def test_simple_bracketing_1(self):
+        fct = lambda x: exp(x) * (x - 1) * (x - 1) * (x - 1)
+        benchmark = 1.0
+        before, result, after = simple_bracketing(fct, -2.0, 2.0)
+        self.assertAlmostEqual(benchmark, result)
+
+    def test_simple_bracketing_2(self):
+        fct = lambda x: exp(x) * (x - 1) * (x - 1) * (x - 1)
+        benchmark = 1.0
+        before, result, after = simple_bracketing(fct, -2.0, 2.0)
+        self.assertAlmostEqual(benchmark, result)
+
     def test_composion_fct(self):
         compo_fct = CompositionFct(lambda x: x * x, lambda x: x + 5)
         y = compo_fct(2)
@@ -1085,6 +1105,74 @@ class math_fcts_test(unittest.TestCase):
         facts = [0.3, 6.23, 4.42, 4.789, -3.2, -1.3]
         p = prod(facts)
         self.assertAlmostEqual(p, 164.57722619519998, 10)
+
+
+class CubicSplineUnitTest(unittest.TestCase):
+    def setUp(self):
+        pass
+
+    def test_spline_linear(self):
+        x = [0, 2, 4, 6]
+        y0 = [5, 5.4, 5.8, 6.2]
+        f = spline(x, y0)
+        self.assertAlmostEqual(f(1), 5.2)
+        self.assertAlmostEqual(f(3), 5.6)
+        # self.assertRaises(ValueError, f(-1))
+
+    def test_spline_quadratic(self):
+        x = [0, 2, 4, 6]
+        y1 = [1, 5, 17, 37]
+        f = spline(x, y1, (2, 2))
+        self.assertAlmostEqual(f(3), 9 + 1)
+        self.assertAlmostEqual(f(5), 25 + 1)
+
+    def test_importance_of_bordercondition(self):
+        x = [0, 2, 4, 6]
+        y1 = [1, 5, 17, 37]
+        f = spline(x, y1, (0, 0))
+        self.assertNotAlmostEqual(f(3), 9 + 1)
+        self.assertNotAlmostEqual(f(5), 25 + 1)
+
+    def test_spline_cubic(self):
+        x = [0, 2, 4, 6]
+        y2 = [0, 8, 64, 216]
+        f = spline(x, y2, (0, 36))
+        self.assertAlmostEqual(f(5), 125)
+
+    def test_compare_with_data(self):
+        file = open('test_data/cubic_spline.txt')
+        self.read_data = False
+        self.read_interpolation = False
+
+        xdata = list()
+        ydata = list()
+        grid = list()
+        interpolation_values = list()
+
+        for line in file:
+            if line.rstrip('\n') == 'DATAPOINTS':
+                self.read_data = True
+                self.read_interpolation = False
+            elif line.rstrip('\n') == 'INTERPOLATIONPOINTS':
+                self.read_data = False
+                self.read_interpolation = True
+            elif self.read_data:
+                parts = line.rstrip().split(';')
+                xdata.append(float(parts[0]))
+                ydata.append(float(parts[1]))
+            elif self.read_interpolation:
+                parts = line.rstrip().split(';')
+                grid.append(float(parts[0]))
+                interpolation_values.append(float(parts[1]))
+
+        file.close()
+
+        f = spline(xdata, ydata)
+        g = nak_spline(xdata, ydata)
+        for point, value in zip(grid, interpolation_values):
+            self.assertEqual(f(point), g(point))
+            self.assertAlmostEqual(f(point), value, 12)
+
 
 if __name__ == "__main__":
     import sys

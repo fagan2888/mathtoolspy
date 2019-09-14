@@ -12,7 +12,7 @@
 
 
 def transposeMatrix(m):
-    return map(list,zip(*m))
+    return list(map(list,list(zip(*m))))
 
 def getMatrixMinor(m,i,j):
     return [row[:j] + row[j+1:] for row in (m[:i]+m[i+1:])]
@@ -51,17 +51,17 @@ def getMatrixInverse(m):
 
 # --- cholesky ---  https://rosettacode.org/wiki/Cholesky_decomposition#Python
 
-from __future__ import print_function
+
 
 from pprint import pprint
 from math import sqrt
 
 
 def cholesky(A):
-    L = [[0.0] * len(A) for _ in xrange(len(A))]
-    for i in xrange(len(A)):
-        for j in xrange(i + 1):
-            s = sum(L[i][k] * L[j][k] for k in xrange(j))
+    L = [[0.0] * len(A) for _ in range(len(A))]
+    for i in range(len(A)):
+        for j in range(i + 1):
+            s = sum(L[i][k] * L[j][k] for k in range(j))
             L[i][j] = sqrt(A[i][i] - s) if (i == j) else \
                 (1.0 / L[j][j] * (A[i][j] - s))
     return L
@@ -92,11 +92,11 @@ def print_matrix(Title, M):
 
 def print_matrices(Action, Title1, M1, Title2, M2):
     print(Action)
-    print(Title1, '\t' * int(len(M1) / 2) + "\t" * len(M1), Title2)
+    print((Title1, '\t' * int(len(M1) / 2) + "\t" * len(M1), Title2))
     for i in range(len(M1)):
         row1 = ['{0:+7.3f}'.format(x) for x in M1[i]]
         row2 = ['{0:+7.3f}'.format(x) for x in M2[i]]
-        print(row1, '\t', row2)
+        print((row1, '\t', row2))
 
 
 def zeros_matrix(rows, cols):

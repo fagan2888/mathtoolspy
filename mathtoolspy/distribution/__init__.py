@@ -11,4 +11,4 @@
 # License:  Apache License 2.0 (see LICENSE file)
 
 
-from normal_distribution import *
+from .normal_distribution import *

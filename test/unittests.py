@@ -82,7 +82,7 @@ def generate_integration_tests():
     fi = open(file_name, "w")
     c = 0
     i_fct = 0
-    for n, i in integrators_names.items():
+    for n, i in list(integrators_names.items()):
         i_fct = 0
         for f in fcts_names:
             for l, u in integration_boundaries:
@@ -929,7 +929,7 @@ class Test(unittest.TestCase):
         benchmark.append(OptimizerResult.create_succesful(1.07728364364, -6.07916570029, 32))
         benchmark.append(OptimizerResult.create_succesful(1.07728363789, -6.07916570029, 40))
         benchmark.append(OptimizerResult.create_succesful(1.07728363067, -6.07916570029, 50))
-        for i in xrange(3):
+        for i in range(3):
             self._assert_optimizer_results(benchmark[i], result[i], 7)
 
     def test_optimizer_1dim_golden_0(self):
@@ -944,7 +944,7 @@ class Test(unittest.TestCase):
         benchmark.append(OptimizerResult.create_succesful(1.0, -6.0, 6))
         benchmark.append(OptimizerResult.create_succesful(1.0, -6.0, 80))
         benchmark.append(OptimizerResult.create_succesful(1.0, -6.0, 80))
-        for i in xrange(3):
+        for i in range(3):
             self._assert_optimizer_results(benchmark[i], result[i])
 
     def test_optimizer_1dim_brent_1(self):
@@ -1114,7 +1114,7 @@ class SurfaceTest(unittest.TestCase):
 class math_fcts_test(unittest.TestCase):
 
     def test_prod_0(self):
-        p = prod([i for i in xrange(2, 10)])
+        p = prod([i for i in range(2, 10)])
         self.assertAlmostEqual(p, 362880.0, 10)
 
     def test_prod_2(self):
@@ -1200,9 +1200,9 @@ if __name__ == "__main__":
     print('')
     print('======================================================================')
     print('')
-    print('run %s' % __file__)
-    print('in %s' % os.getcwd())
-    print('started  at %s' % str(start_time))
+    print(('run %s' % __file__))
+    print(('in %s' % os.getcwd()))
+    print(('started  at %s' % str(start_time)))
     print('')
     print('----------------------------------------------------------------------')
     print('')
@@ -1214,10 +1214,10 @@ if __name__ == "__main__":
     print('')
     print('======================================================================')
     print('')
-    print('ran %s' % __file__)
-    print('in %s' % os.getcwd())
-    print('started  at %s' % str(start_time))
-    print('finished at %s' % str(datetime.now()))
+    print(('ran %s' % __file__))
+    print(('in %s' % os.getcwd()))
+    print(('started  at %s' % str(start_time)))
+    print(('finished at %s' % str(datetime.now())))
     print('')
     print('----------------------------------------------------------------------')
     print('')

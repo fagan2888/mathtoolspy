@@ -11,6 +11,6 @@
 # License:  Apache License 2.0 (see LICENSE file)
 
 
-from math_fcts import *
-from mathconst import *
-from surface import *
+from .math_fcts import *
+from .mathconst import *
+from .surface import *

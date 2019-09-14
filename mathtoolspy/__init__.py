@@ -31,8 +31,8 @@ __data__ = ()
 __scripts__ = ()
 
 
-from distribution import *
-from integration import *
-from interpolation import *
-from solver import *
-from utils import *
+from .distribution import *
+from .integration import *
+from .interpolation import *
+from .solver import *
+from .utils import *

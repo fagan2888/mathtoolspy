@@ -11,9 +11,9 @@
 # License:  Apache License 2.0 (see LICENSE file)
 
 
-from analytic_solver import *
-from minimize_algorithm_1dim_brent import *
-from minimize_algorithm_1dim_golden import *
-from minimize_algorithm_ndim_powell import *
-from minimum_bracketing import *
-from optimizer import *
+from .analytic_solver import *
+from .minimize_algorithm_1dim_brent import *
+from .minimize_algorithm_1dim_golden import *
+from .minimize_algorithm_ndim_powell import *
+from .minimum_bracketing import *
+from .optimizer import *

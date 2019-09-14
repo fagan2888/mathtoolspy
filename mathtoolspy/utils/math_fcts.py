@@ -15,7 +15,8 @@
 The MathFct contains some mathematically method, which are not supported by the Python lib.
 """
 import operator
-from mathconst import DOUBLE_TOL
+from .mathconst import DOUBLE_TOL
+from functools import reduce
 
 
 def abs_sign(a, b):
@@ -68,7 +69,7 @@ def get_grid(start, end, nsteps=100):
 
     """
     step = (end-start) / float(nsteps)
-    return [start + i * step for i in xrange(nsteps+1)]
+    return [start + i * step for i in range(nsteps+1)]
 
 
 class FctWithCount(object):

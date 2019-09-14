@@ -11,6 +11,6 @@
 # License:  Apache License 2.0 (see LICENSE file)
 
 
-from bilinear import *
-from linear import *
-from spline import *
+from .bilinear import *
+from .linear import *
+from .spline import *

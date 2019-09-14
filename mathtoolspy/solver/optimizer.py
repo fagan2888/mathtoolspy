@@ -14,7 +14,7 @@
 from math import tan, atan, fabs
 
 from mathtoolspy.utils.mathconst import PI, DOUBLE_TOL
-from minimum_bracketing import minimum_bracketing
+from .minimum_bracketing import minimum_bracketing
 
 MAX_NUMBER_OF_FUNCTION_CALLS = 5000
 
@@ -302,7 +302,7 @@ class combinations:
         self._increase(0)
         return ret
 
-    def next(self):
+    def __next__(self):
         return self.__next__()
 
     def _increase(self, c):

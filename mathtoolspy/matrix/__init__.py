@@ -11,7 +11,3 @@
 # License:  Apache License 2.0 (see LICENSE file)
 
 
-from gauss_kronrod_integrator import *
-from gauss_legendre_integrator import *
-from gauss_lobatto_integrator import *
-from simplex_integrator import *

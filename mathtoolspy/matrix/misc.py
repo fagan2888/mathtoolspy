@@ -1,5 +1,15 @@
+# -*- coding: utf-8 -*-
 
-# --- inverse ---  https://stackoverflow.com/questions/32114054/matrix-inversion-without-numpy
+# mathtoolspy
+# -----------
+# A fast, efficient Python library for mathematically operations, like
+# integration, solver, distributions and other useful functions.
+# 
+# Author:   sonntagsgesicht, based on a fork of Deutsche Postbank [pbrisk]
+# Version:  0.3, copyright Saturday, 14 September 2019
+# Website:  https://github.com/sonntagsgesicht/mathtoolspy
+# License:  Apache License 2.0 (see LICENSE file)
+
 
 def transposeMatrix(m):
     return map(list,zip(*m))

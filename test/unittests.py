@@ -1,10 +1,24 @@
-'''
-Created on 16.12.2016
+# -*- coding: utf-8 -*-
 
-@author: MarcusSteinkamp
-'''
+# mathtoolspy
+# -----------
+# A fast, efficient Python library for mathematically operations, like
+# integration, solver, distributions and other useful functions.
+# 
+# Author:   sonntagsgesicht, based on a fork of Deutsche Postbank [pbrisk]
+# Version:  0.3, copyright Saturday, 14 September 2019
+# Website:  https://github.com/sonntagsgesicht/mathtoolspy
+# License:  Apache License 2.0 (see LICENSE file)
+
+
+import os
+import sys
 import unittest
+
 from math import exp, cos
+
+sys.path.append('.')
+sys.path.append('..')
 
 from mathtoolspy.distribution.normal_distribution import density_normal_dist, cdf_abramowitz_stegun
 from mathtoolspy.integration.gauss_kronrod_integrator import GaussKronrodIntegrator as gauss_kronrod
@@ -25,6 +39,8 @@ from mathtoolspy import Surface
 from mathtoolspy.utils.math_fcts import prod
 
 from mathtoolspy import spline, nak_spline, natural_spline
+
+TEST_DATA = 'test/test_data/' if os.path.exists('test') else 'test_data/'
 
 def generate_integration_tests():
     def print_(f, msg):
@@ -1140,7 +1156,7 @@ class CubicSplineUnitTest(unittest.TestCase):
         self.assertAlmostEqual(f(5), 125)
 
     def test_compare_with_data(self):
-        file = open('test_data/cubic_spline.txt')
+        file = open(TEST_DATA + 'cubic_spline.txt')
         self.read_data = False
         self.read_interpolation = False
 

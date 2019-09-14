@@ -24,6 +24,8 @@ from mathtoolspy.solver.analytic_solver import roots_of_cubic_polynom
 from mathtoolspy import Surface
 from mathtoolspy.utils.math_fcts import prod
 
+from mathtoolspy import spline, nak_spline, natural_spline
+
 def generate_integration_tests():
     def print_(f, msg):
         f.write("\t" + msg + "\n")
@@ -1103,6 +1105,74 @@ class math_fcts_test(unittest.TestCase):
         facts = [0.3, 6.23, 4.42, 4.789, -3.2, -1.3]
         p = prod(facts)
         self.assertAlmostEqual(p, 164.57722619519998, 10)
+
+
+class CubicSplineUnitTest(unittest.TestCase):
+    def setUp(self):
+        pass
+
+    def test_spline_linear(self):
+        x = [0, 2, 4, 6]
+        y0 = [5, 5.4, 5.8, 6.2]
+        f = spline(x, y0)
+        self.assertAlmostEqual(f(1), 5.2)
+        self.assertAlmostEqual(f(3), 5.6)
+        # self.assertRaises(ValueError, f(-1))
+
+    def test_spline_quadratic(self):
+        x = [0, 2, 4, 6]
+        y1 = [1, 5, 17, 37]
+        f = spline(x, y1, (2, 2))
+        self.assertAlmostEqual(f(3), 9 + 1)
+        self.assertAlmostEqual(f(5), 25 + 1)
+
+    def test_importance_of_bordercondition(self):
+        x = [0, 2, 4, 6]
+        y1 = [1, 5, 17, 37]
+        f = spline(x, y1, (0, 0))
+        self.assertNotAlmostEqual(f(3), 9 + 1)
+        self.assertNotAlmostEqual(f(5), 25 + 1)
+
+    def test_spline_cubic(self):
+        x = [0, 2, 4, 6]
+        y2 = [0, 8, 64, 216]
+        f = spline(x, y2, (0, 36))
+        self.assertAlmostEqual(f(5), 125)
+
+    def test_compare_with_data(self):
+        file = open('test_data/cubic_spline.txt')
+        self.read_data = False
+        self.read_interpolation = False
+
+        xdata = list()
+        ydata = list()
+        grid = list()
+        interpolation_values = list()
+
+        for line in file:
+            if line.rstrip('\n') == 'DATAPOINTS':
+                self.read_data = True
+                self.read_interpolation = False
+            elif line.rstrip('\n') == 'INTERPOLATIONPOINTS':
+                self.read_data = False
+                self.read_interpolation = True
+            elif self.read_data:
+                parts = line.rstrip().split(';')
+                xdata.append(float(parts[0]))
+                ydata.append(float(parts[1]))
+            elif self.read_interpolation:
+                parts = line.rstrip().split(';')
+                grid.append(float(parts[0]))
+                interpolation_values.append(float(parts[1]))
+
+        file.close()
+
+        f = spline(xdata, ydata)
+        g = nak_spline(xdata, ydata)
+        for point, value in zip(grid, interpolation_values):
+            self.assertEqual(f(point), g(point))
+            self.assertAlmostEqual(f(point), value, 12)
+
 
 if __name__ == "__main__":
     import sys

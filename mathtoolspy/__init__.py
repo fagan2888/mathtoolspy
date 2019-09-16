@@ -4,7 +4,7 @@
 # -----------
 # A fast, efficient Python library for mathematically operations, like
 # integration, solver, distributions and other useful functions.
-# 
+#
 # Author:   sonntagsgesicht, based on a fork of Deutsche Postbank [pbrisk]
 # Version:  0.3, copyright Saturday, 14 September 2019
 # Website:  https://github.com/sonntagsgesicht/mathtoolspy
@@ -25,7 +25,7 @@ __author__ = 'sonntagsgesicht, based on a fork of Deutsche Postbank [pbrisk]'
 __email__ = 'sonntagsgesicht@icloud.com'
 __url__ = 'https://github.com/sonntagsgesicht/' + __name__
 __license__ = 'Apache License 2.0'
-__dependencies__ = ()
+__dependencies__ = ('numpy',)
 __dependency_links__ = ()
 __data__ = ()
 __scripts__ = ()

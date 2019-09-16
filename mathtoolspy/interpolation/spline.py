@@ -179,11 +179,9 @@ class spline(base_interpolation):
 
         try:
             import numpy
-            raise ImportError()
         except ImportError:
             msg = self.__module__, self.__class__.__name__
             raise ImportError('%s.%s requires `numpy` for solving linear equation systems.' % msg)
-            return
         k = numpy.linalg.solve(mat, b)
 
         for i in range(1, n):

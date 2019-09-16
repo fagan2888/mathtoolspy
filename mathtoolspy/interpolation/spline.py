@@ -4,7 +4,7 @@
 # -----------
 # A fast, efficient Python library for mathematically operations, like
 # integration, solver, distributions and other useful functions.
-# 
+#
 # Author:   sonntagsgesicht, based on a fork of Deutsche Postbank [pbrisk]
 # Version:  0.3, copyright Saturday, 14 September 2019
 # Website:  https://github.com/sonntagsgesicht/mathtoolspy
@@ -177,7 +177,12 @@ class spline(base_interpolation):
 
             b[n - 1][0] = 3 * (y[n - 1] - y[n - 2]) / (x[n - 1] - x[n - 2]) ** 2 + 0.5 * right_boundary_slope
 
-        import numpy
+        try:
+            import numpy
+        except ImportError:
+            msg = self.__module__, self.__class__.__name__
+            raise ImportError('%s.%s requires `numpy` for solving linear equation systems.' % msg)
+            return
         k = numpy.linalg.solve(mat, b)
 
         for i in range(1, n):

@@ -4,7 +4,7 @@
 # -----------
 # A fast, efficient Python library for mathematically operations, like
 # integration, solver, distributions and other useful functions.
-# 
+#
 # Author:   sonntagsgesicht, based on a fork of Deutsche Postbank [pbrisk]
 # Version:  0.3, copyright Saturday, 14 September 2019
 # Website:  https://github.com/sonntagsgesicht/mathtoolspy
@@ -37,9 +37,9 @@ def minimize_algorithm_1dim_brent(fct, _a, _b, _c, tolerance=DOUBLE_TOL):
 
     a = _a if _a < _c else _c
     b = _a if _a > _c else _c
-    assert a < _b and _b < b
-
-    x = w = v = _b;
+    if a < _b < b:
+        raise RuntimeError("Value %0.4f does not embrace %0.4f and %0.4f for bracketing." % (_b, a, b))
+    x = w = v = _b
     fv = fw = fx = fct(x)
     tol1 = tolerance
     d = e = 0.0

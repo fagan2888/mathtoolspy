@@ -4,7 +4,7 @@
 # -----------
 # A fast, efficient Python library for mathematically operations, like
 # integration, solver, distributions and other useful functions.
-# 
+#
 # Author:   sonntagsgesicht, based on a fork of Deutsche Postbank [pbrisk]
 # Version:  0.3, copyright Saturday, 14 September 2019
 # Website:  https://github.com/sonntagsgesicht/mathtoolspy
@@ -156,9 +156,10 @@ def simple_bracketing(func, a, b, precision=TINY):
     else:
         f = func
 
-    msg = "simple_bracketing function must be loc monotone between %0.4f and %0.4f \n" % (a, b)
-    msg += "and simple_bracketing 0. between  %0.4f and %0.4f." % (fa, fb)
-    assert fa <= 0. <= fb, msg
+    if fa <= 0. <= fb:
+        msg = "simple_bracketing function must be loc monotone between %0.4f and %0.4f \n" % (a, b)
+        msg += "and simple_bracketing 0. between  %0.4f and %0.4f." % (fa, fb)
+        raise RuntimeError(msg)
 
     m = a + (b-a) * 0.5
     if abs(b - a) < DOUBLE_TOL and abs(fb - fa) < precision:

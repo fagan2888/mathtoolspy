@@ -4,7 +4,7 @@
 # -----------
 # A fast, efficient Python library for mathematically operations, like
 # integration, solver, distributions and other useful functions.
-# 
+#
 # Author:   sonntagsgesicht, based on a fork of Deutsche Postbank [pbrisk]
 # Version:  0.3, copyright Saturday, 14 September 2019
 # Website:  https://github.com/sonntagsgesicht/mathtoolspy
@@ -37,7 +37,8 @@ class GaussKronrodIntegrator:
 
     def _init_min_iterations(self, min_number_of_iterations):
         max_iter = self.max_number_of_iterations
-        assert min_number_of_iterations <= max_iter
+        if min_number_of_iterations <= max_iter:
+            raise IndentationError('Number of %d iterations exceeded.' % max_iter)
         order = self.initial_order
         for k in range(max_iter):
             if GaussKronrodConstants.gaussKronrodPattersonRule[k] >= order:

@@ -2,11 +2,55 @@
 mathtoolspy
 ===========
 
-.. image:: https://img.shields.io/codeship/d89309c0-4619-0135-9944-0ac58edb84f9/master.svg
-    :target: https://codeship.com//projects/231332
+.. image:: https://img.shields.io/codeship/3c73e880-ba8a-0137-8ad5-4a1d2f2d4303/master.svg
+    :target: https://codeship.com//projects/364829
 
-.. image:: https://readthedocs.org/projects/mathtoolspy/badge
-    :target: http://mathtoolspy.readthedocs.io
+.. image:: https://travis-ci.org/sonntagsgesicht/mathtoolspy.svg?branch=master
+    :target: https://travis-ci.org/sonntagsgesicht/mathtoolspy
+
+.. image:: https://img.shields.io/readthedocs/mathtoolspy
+   :target: http://mathtoolspy.readthedocs.io
+   :alt: Read the Docs
+
+.. image:: https://img.shields.io/codefactor/grade/github/sonntagsgesicht/mathtoolspy/master
+   :target: https://www.codefactor.io/repository/github/sonntagsgesicht/mathtoolspy
+   :alt: CodeFactor Grade
+
+.. image:: https://img.shields.io/codeclimate/maintainability/sonntagsgesicht/mathtoolspy
+   :target: https://codeclimate.com/github/sonntagsgesicht/mathtoolspy/maintainability
+   :alt: Code Climate maintainability
+
+.. image:: https://img.shields.io/codeclimate/coverage/sonntagsgesicht/mathtoolspy
+   :target: https://codeclimate.com/github/sonntagsgesicht/mathtoolspy/test_coverage
+   :alt: Code Climate Coverage
+
+.. image:: https://img.shields.io/lgtm/grade/python/g/sonntagsgesicht/mathtoolspy.svg
+   :target: https://lgtm.com/projects/g/sonntagsgesicht/mathtoolspy/context:python/
+   :alt: lgtm grade
+
+.. image:: https://img.shields.io/lgtm/alerts/g/sonntagsgesicht/mathtoolspy.svg
+   :target: https://lgtm.com/projects/g/sonntagsgesicht/mathtoolspy/alerts/
+   :alt: total lgtm alerts
+
+.. image:: https://img.shields.io/github/license/sonntagsgesicht/mathtoolspy
+   :target: https://github.com/sonntagsgesicht/mathtoolspy/raw/master/LICENSE
+   :alt: GitHub
+
+.. image:: https://img.shields.io/github/release/sonntagsgesicht/mathtoolspy?label=github
+   :target: https://github.com/sonntagsgesicht/mathtoolspy/releases
+   :alt: GitHub release
+
+.. image:: https://img.shields.io/pypi/v/mathtoolspy
+   :target: https://pypi.org/project/mathtoolspy/
+   :alt: PyPI Version
+
+.. image:: https://img.shields.io/pypi/pyversions/mathtoolspy
+   :target: https://pypi.org/project/mathtoolspy/
+   :alt: PyPI - Python Version
+
+.. image:: https://img.shields.io/pypi/dm/mathtoolspy
+   :target: https://pypi.org/project/mathtoolspy/
+   :alt: PyPI Downloads
 
 A fast, efficient Python library for mathematically operations, like
 integration, solver, distributions and other useful functions.

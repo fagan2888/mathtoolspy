@@ -37,7 +37,7 @@ def minimize_algorithm_1dim_brent(fct, _a, _b, _c, tolerance=DOUBLE_TOL):
 
     a = _a if _a < _c else _c
     b = _a if _a > _c else _c
-    if a < _b < b:
+    if not a < _b < b:
         raise RuntimeError("Value %0.4f does not embrace %0.4f and %0.4f for bracketing." % (_b, a, b))
     x = w = v = _b
     fv = fw = fx = fct(x)

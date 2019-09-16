@@ -156,7 +156,7 @@ def simple_bracketing(func, a, b, precision=TINY):
     else:
         f = func
 
-    if fa <= 0. <= fb:
+    if not fa <= 0. <= fb:
         msg = "simple_bracketing function must be loc monotone between %0.4f and %0.4f \n" % (a, b)
         msg += "and simple_bracketing 0. between  %0.4f and %0.4f." % (fa, fb)
         raise RuntimeError(msg)

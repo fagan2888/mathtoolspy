@@ -37,7 +37,7 @@ class GaussKronrodIntegrator:
 
     def _init_min_iterations(self, min_number_of_iterations):
         max_iter = self.max_number_of_iterations
-        if min_number_of_iterations <= max_iter:
+        if not min_number_of_iterations <= max_iter:
             raise IndentationError('Number of %d iterations exceeded.' % max_iter)
         order = self.initial_order
         for k in range(max_iter):

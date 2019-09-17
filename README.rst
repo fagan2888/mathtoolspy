@@ -1,12 +1,14 @@
-===========
-mathtoolspy
-===========
+
+Python library *mathtoolspy*
+----------------------------
 
 .. image:: https://img.shields.io/codeship/3c73e880-ba8a-0137-8ad5-4a1d2f2d4303/master.svg
-    :target: https://codeship.com//projects/364829
+   :target: https://codeship.com//projects/364829
+   :alt: CodeShip
 
 .. image:: https://travis-ci.org/sonntagsgesicht/mathtoolspy.svg?branch=master
-    :target: https://travis-ci.org/sonntagsgesicht/mathtoolspy
+   :target: https://travis-ci.org/sonntagsgesicht/mathtoolspy
+   :alt: Travis ci
 
 .. image:: https://img.shields.io/readthedocs/mathtoolspy
    :target: http://mathtoolspy.readthedocs.io
@@ -20,9 +22,9 @@ mathtoolspy
    :target: https://codeclimate.com/github/sonntagsgesicht/mathtoolspy/maintainability
    :alt: Code Climate maintainability
 
-.. image:: https://img.shields.io/codeclimate/coverage/sonntagsgesicht/mathtoolspy
-   :target: https://codeclimate.com/github/sonntagsgesicht/mathtoolspy/test_coverage
-   :alt: Code Climate Coverage
+.. image:: https://img.shields.io/codecov/c/github/sonntagsgesicht/mathtoolspy
+   :target: https://codecov.io/gh/sonntagsgesicht/mathtoolspy
+   :alt: Codecov
 
 .. image:: https://img.shields.io/lgtm/grade/python/g/sonntagsgesicht/mathtoolspy.svg
    :target: https://lgtm.com/projects/g/sonntagsgesicht/mathtoolspy/context:python/

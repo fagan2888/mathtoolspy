@@ -1,4 +1,6 @@
 
+.. module:: mathtoolspy
+
 -----------------
 API Documentation
 -----------------
@@ -9,33 +11,45 @@ API Documentation
 Distributions
 =============
 
-.. automodule:: distribution.normal_distribution
+.. automodule:: mathtoolspy.distribution.normal_distribution
+
+
+Interpolation
+=============
+
+.. automodule:: mathtoolspy.interpolation.linear
+.. automodule:: mathtoolspy.interpolation.spline
+.. automodule:: mathtoolspy.interpolation.bilinear
 
 
 Integration
 ===========
 
-.. automodule:: integration.gauss_kronrod_integrator
-.. automodule:: integration.gauss_legendre_integrator
-.. automodule:: integration.gauss_lobatto_integrator
-.. automodule:: integration.simplex_integrator
+.. automodule:: mathtoolspy.integration.gauss_kronrod_integrator
+.. automodule:: mathtoolspy.integration.gauss_legendre_integrator
+.. automodule:: mathtoolspy.integration.gauss_lobatto_integrator
+.. automodule:: mathtoolspy.integration.simplex_integrator
+
+
+.. Matrix
+.. ======
+.. .. automodule:: mathtoolspy.matrix.misc
 
 
 Solver
 ======
 
-.. automodule:: solver.analytic_solver
-.. automodule:: solver.minimize_algorithm_1dim_brent
-.. automodule:: solver.minimize_algorithm_1dim_golden
-.. automodule:: solver.minimize_algorithm_ndim_powell
-.. automodule:: solver.minimum_bracketing
-.. automodule:: solver.optimizer
-
+.. automodule:: mathtoolspy.solver.analytic_solver
+.. automodule:: mathtoolspy.solver.minimize_algorithm_1dim_brent
+.. automodule:: mathtoolspy.solver.minimize_algorithm_1dim_golden
+.. automodule:: mathtoolspy.solver.minimize_algorithm_ndim_powell
+.. automodule:: mathtoolspy.solver.minimum_bracketing
+.. automodule:: mathtoolspy.solver.optimizer
 
 
 Utilities
 =========
 
-.. automodule:: utils.math_fcts
-.. automodule:: utils.mathconst
-.. automodule:: utils.surface
+.. automodule:: mathtoolspy.utils.math_fcts
+.. automodule:: mathtoolspy.utils.mathconst
+.. automodule:: mathtoolspy.utils.surface
